@@ -1,0 +1,12 @@
+name: goodmorning-email
+title: GoodMorning-email
+username: katie
+account: katie
+server: colorado.rstudio.com
+hostUrl: https://colorado.rstudio.com/rsc/__api__
+appId: 3791
+bundleId: 32130
+url: https://colorado.rstudio.com/rsc/content/3791/
+when: 1575579170.9698
+asMultiple: TRUE
+asStatic: FALSE

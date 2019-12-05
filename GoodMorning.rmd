@@ -1,0 +1,21 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r libraries}
+library(blastula)
+```
+
+ 
+```{r, echo = FALSE}
+attach_connect_email(
+  render_connect_email("GoodMorning-email.rmd"),
+  subject = "Good Morning!"
+)
+```

@@ -1,0 +1,11 @@
+---
+title: "Good Morning!"
+output: blastula::blastula_email 
+--- 
+
+```{r}
+library(randomNames)
+library(praise)
+```
+
+Good morning!  Today you shall be known as `r paste(paste0(random_name(),"."),praise(), "Go get 'em!")`.  

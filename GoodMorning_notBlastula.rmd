@@ -1,0 +1,46 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+# rsconnect::writeManifest()
+
+random_name <- local({
+  adjectives <- readLines("adjectives.txt")
+  animals <- readLines("animals.txt")
+
+
+  function(n = 1, seed = Sys.time()) {
+    withr::with_seed(as.integer(seed), {
+      x <- sample(length(adjectives) * length(animals), n * 2, replace = TRUE)
+      adj <- x[seq_along(x) %% 2 == 1] %% length(adjectives) + 1
+      ani <- x[seq_along(x) %% 2 == 0] %% length(animals) + 1
+      paste0(adjectives[adj], "_", animals[ani])
+    })
+  }
+})
+
+name <- random_name()
+```
+
+Good morning!  Today you shall be known as `r paste(paste0(name,"."), "Go get 'em!")`  
+ 
+```{r Email parameters}
+subject <- paste("Your code name for",weekdays(Sys.Date()))
+rmarkdown::output_metadata$set(rsc_email_subject = subject)
+
+
+#html formatted body
+# Construct the HTML email message.
+message <- paste(htmltools::p("Good Morning! \nToday you shall be known as ",name,".", " Go get'em!"))
+
+# Give RStudio Connect the message and image data for the HTML email.
+rmarkdown::output_metadata$set(rsc_email_body_html = message)
+
+```
